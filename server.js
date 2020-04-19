@@ -7,14 +7,14 @@ require('dotenv/config');
 const app = express();
 const port = 3000;
 
-const charactersRoutes = require('./routes/characters');
+const feedingRoutes = require('./routes/feeding');
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
-app.use('/characters', charactersRoutes);
+app.use('/feeding', feedingRoutes);
 
 app.get('/', (req, res) => {
 	res.send('Home');

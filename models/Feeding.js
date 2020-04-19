@@ -5,7 +5,7 @@ const FeedingSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	food: {
+	foodType: {
 		type: String,
 		required: true,
 	},
@@ -13,7 +13,7 @@ const FeedingSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	where: {
+	location: {
 		type: String,
 		required: true,
 	},

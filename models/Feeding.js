@@ -5,6 +5,12 @@ const FeedingSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	// what they were fed: Bread, rice
+	food: {
+		type: String,
+		required: true,
+	},
+	// type of food: Grains, veggies
 	foodType: {
 		type: String,
 		required: true,

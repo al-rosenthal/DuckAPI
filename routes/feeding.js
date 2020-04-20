@@ -6,6 +6,7 @@ const Feeding = require('../models/Feeding');
 router.post('/', async (req, res) => {
 	const feed = new Feeding({
 		feedingTime: req.body.feedingTime,
+		food: req.body.food,
 		foodType: req.body.foodType,
 		foodAmount: req.body.foodAmount,
 		location: req.body.location,
@@ -16,7 +17,7 @@ router.post('/', async (req, res) => {
 		const savedFeed = await feed.save();
 		res.json(savedFeed);
 	} catch (err) {
-		res.json({ message: err });
+		res.status(400).json({ message: err });
 	}
 });
 

@@ -16,14 +16,14 @@ router.post('/', async (req, res) => {
 	});
 	console.log('Built Object');
 	try {
-		feed.save().then((savedFeed) => {
-			res.send().json(savedFeed);
+		feed.save((err, product) => {
+			if (err) {
+				console.log(err);
+			}
+			res.json(product);
 		});
-		console.log('Tried to save');
 	} catch (err) {
-		console.log('oops');
-		console.log(err);
-		res.send().status(400).json({ message: err });
+		res.status(400).json({ message: err });
 	}
 });
 

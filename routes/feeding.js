@@ -4,6 +4,7 @@ const Feeding = require('../models/Feeding');
 
 // Feed the ducks
 router.post('/', async (req, res) => {
+	console.log('Made it to request');
 	const feed = new Feeding({
 		feedingTime: req.body.feedingTime,
 		food: req.body.food,
@@ -13,11 +14,15 @@ router.post('/', async (req, res) => {
 		numberOfDucks: req.body.numberOfDucks,
 		repeatFeeding: req.body.repeatFeeding,
 	});
+	console.log('Built Object');
 	try {
 		const savedFeed = await feed.save();
-		res.json(savedFeed);
+		console.log('Tried to save');
+		res.send().json(savedFeed);
 	} catch (err) {
-		res.status(400).json({ message: err });
+		console.log('oops');
+		console.log(err);
+		res.send().status(400).json({ message: err });
 	}
 });
 

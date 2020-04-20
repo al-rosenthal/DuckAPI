@@ -16,9 +16,10 @@ router.post('/', async (req, res) => {
 	});
 	console.log('Built Object');
 	try {
-		const savedFeed = await feed.save();
-		console.log('Tried to save');
-		res.send().json(savedFeed);
+		feed.save().then((savedFeed) => {
+			console.log('Tried to save');
+			res.send().json(savedFeed);
+		});
 	} catch (err) {
 		console.log('oops');
 		console.log(err);

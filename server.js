@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv/config');
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 const feedingRoutes = require('./routes/feeding');
 
@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/feeding', feedingRoutes);
-
 app.get('/', (req, res) => {
 	res.send('Home');
 });

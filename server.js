@@ -23,7 +23,8 @@ app.get('/', (req, res) => {
 mongoose.connect(
 	process.env.DB_CONNECTION,
 	{ useNewUrlParser: true, useUnifiedTopology: true },
-	() => {
+	(err) => {
+		console.log(err);
 		console.log('Connected to DB');
 	}
 );

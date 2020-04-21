@@ -16,16 +16,19 @@ router.post('/', async (req, res) => {
 	});
 	console.log('Built Object');
 	try {
-		feed.save((err, product) => {
+		feed.save(function (err, product) {
 			if (err) {
 				console.log(err);
-			} else {
-				res.send(product);
 			}
+			res.send(product);
 		});
 	} catch (err) {
 		res.status(400).json({ message: err });
 	}
+});
+
+router.get('/', (req, res) => {
+	res.send('No connection but the route is working');
 });
 
 module.exports = router;

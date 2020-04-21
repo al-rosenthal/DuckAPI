@@ -3,7 +3,7 @@ const router = express.Router();
 const Feeding = require('../models/Feeding');
 
 // Feed the ducks
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
 	console.log('Made it to request');
 	const feed = new Feeding({
 		feedingTime: req.body.feedingTime,
@@ -16,19 +16,17 @@ router.post('/', async (req, res) => {
 	});
 	console.log('Built Object');
 	try {
-		feed.save(function (err, product) {
-			if (err) {
-				console.log(err);
-			}
-			res.send(product);
-		});
+		feed
+			.save()
+			.then(function (data) {
+				res.send(data);
+			})
+			.catch(function (err) {
+				console.error(err);
+			});
 	} catch (err) {
 		res.status(400).json({ message: err });
 	}
-});
-
-router.get('/', (req, res) => {
-	res.send('No connection but the route is working');
 });
 
 module.exports = router;

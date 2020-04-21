@@ -19,8 +19,9 @@ router.post('/', async (req, res) => {
 		feed.save((err, product) => {
 			if (err) {
 				console.log(err);
+			} else {
+				res.send(product);
 			}
-			res.json(product);
 		});
 	} catch (err) {
 		res.status(400).json({ message: err });
